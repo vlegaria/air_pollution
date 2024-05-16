@@ -4,3 +4,6 @@ all_data_2005xstation_15_05_2024/
 entrenamiento_datos_por_estacion/
 prueba_datos_por_estacion/
 validacion_datos_por_estacion/
+entrenamiento_datos_por_estacion_sin_NaN/
+prueba_datos_por_estacion_sin_NaN/
+validacion_datos_por_estacion_sin_NaN/
