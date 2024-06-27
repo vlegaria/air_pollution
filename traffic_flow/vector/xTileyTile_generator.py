@@ -41,35 +41,52 @@ def latLonToTileZXY(lat, lon, zoom_level):
 def main(args):
     file = args.dirFile
     zoom_level = args.zoom_level
-    #zoom_level = 16
-    
-    df = pd.read_excel(file)
-    stationsOfInterest = []
-    active = []
-    for i in range(len(df)):
-        station = df.loc[i]
-        params = ["O3", "PM10","PM25"] #lista de parámetros que activan/desactivan contingencias ambientales
-        flag = 0 # se pone 0 para iniciar asumiendo que la estación no lee ninguno de los parámetros de interés
-        for param in params:
-            if not np.isnan(station[param]):
-                flag = 1 #Si la estación lee almenos uno de los parámetros de interés, la bandera se activa
-        active.append(flag)
-        if flag == 1:
-            stationsOfInterest.append(station)
-    df["active_env_contingency"] = active
-    df.to_excel(file, index=False)  # index=False evita escribir el índice en el archivo
+    if file.endswith(".xlsx"):
+        #zoom_level = 16
+        
+        df = pd.read_excel(file)
+        stationsOfInterest = []
+        active = []
+        for i in range(len(df)):
+            station = df.loc[i]
+            params = ["O3", "PM10","PM25"] #lista de parámetros que activan/desactivan contingencias ambientales
+            flag = 0 # se pone 0 para iniciar asumiendo que la estación no lee ninguno de los parámetros de interés
+            for param in params:
+                if not np.isnan(station[param]):
+                    flag = 1 #Si la estación lee almenos uno de los parámetros de interés, la bandera se activa
+            active.append(flag)
+            if flag == 1:
+                stationsOfInterest.append(station)
+        df["active_env_contingency"] = active
+        df.to_excel(file, index=False)  # index=False evita escribir el índice en el archivo
 
-    df = pd.read_excel(file)
-    for i in range(len(df)):
-        station = df.loc[i]
-        if station["active_env_contingency"] == 1: #es una estación de interés porque activa/desactiva contingencias
-            latitude = station.Latitude
-            longitude = station.Longitude
-            if pd.notna(latitude) and pd.notna(longitude):
-                tileX, tileY = latLonToTileZXY(latitude, longitude, zoom_level)
-                df.at[i,"xTile_in"] = tileX
-                df.at[i,"yTile_in"] = tileY
-    df.to_excel(file, index=False)  # index=False evita escribir el índice en el archivo
+        df = pd.read_excel(file)
+        for i in range(len(df)):
+            station = df.loc[i]
+            if station["active_env_contingency"] == 1: #es una estación de interés porque activa/desactiva contingencias
+                latitude = station.Latitude
+                longitude = station.Longitude
+                if pd.notna(latitude) and pd.notna(longitude):
+                    tileX, tileY = latLonToTileZXY(latitude, longitude, zoom_level)
+                    df.at[i,"xTile_in"] = tileX
+                    df.at[i,"yTile_in"] = tileY
+        df.to_excel(file, index=False)  # index=False evita escribir el índice en el archivo
+
+    elif file.endswith(".csv"):
+        df = pd.read_csv(file, encoding="Latin1")
+        estaciones = df.dropna(subset=['Trafico'])
+        estaciones = estaciones.reset_index()
+        del estaciones["index"]
+        for i in range(len(df)):
+            station = df.loc[i]
+            if station["Trafico"] == "Si": #es una estación de interés porque activa/desactiva contingencias
+                latitude = station.Latitude
+                longitude = station.Longitude
+                if pd.notna(latitude) and pd.notna(longitude):
+                    tileX, tileY = latLonToTileZXY(latitude, longitude, zoom_level)
+                    df.at[i,"xTile_in"] = tileX
+                    df.at[i,"yTile_in"] = tileY
+        df.to_csv(file, index=False)  # index=False evita escribir el índice en el archivo
 
 
 if __name__ == "__main__":
