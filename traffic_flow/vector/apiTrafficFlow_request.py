@@ -23,22 +23,22 @@ def main(args):
         hora = str(hora_actual.hour)
         minuto = str(hora_actual.minute)
         print(hora, minuto)
-        if minuto == "9":
+        if minuto == "0":
             try:
                 descargar_datos(estaciones, dir_save_vectores, zoom_level)
             except:
                 print("No se descargaron datos a las: ", hora,":", minuto)
-        if minuto == "11":
+        if minuto == "15":
             try:
                 descargar_datos(estaciones, dir_save_vectores, zoom_level)
             except:
                 print("No se descargaron datos a las: ", hora,":", minuto)
-        if minuto == "26":
+        if minuto == "30":
             try:
                 descargar_datos(estaciones, dir_save_vectores, zoom_level)
             except:
                 print("No se descargaron datos a las: ", hora,":", minuto)
-        if minuto == "54":
+        if minuto == "45":
             try:
                 descargar_datos(estaciones, dir_save_vectores, zoom_level)
             except Exception as e:
