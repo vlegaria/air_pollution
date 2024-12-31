@@ -14,3 +14,4 @@ data_processing/datos_data_pre-processedTRAFICO.xlsx
 data_processing/datos_por_estacion_pre_processing
 data_processing/info_split_datasets.csv
 traffic_flow/vector/air_pollutionANDtraffic_data
+csvs
