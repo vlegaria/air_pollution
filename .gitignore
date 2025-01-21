@@ -19,3 +19,17 @@ preprocessing_airpollution_data/datos_por_estacion_sep
 traffic_flow/vector/traffic_images
 preprocessing_airpollution_data/data_jun_sep_2024_all_stations.csv
 preprocessing_airpollution_data/data_sep_2024_all_stations.csv
+best_model*
+all_groups*
+datos_trafico*
+group_list*
+map.html
+nearest.geojson
+nearest.qmd
+idstreetPED.csv
+result*.json
+streetsID_spring.json
+unique_groups*
+withIDstreets.csv
+PEDwithID*
+street_analysis.qgz
