@@ -14,7 +14,7 @@ Primero hay que corregir el formato de los datos crudos (directamente descargado
 6. Cambiar el nombre "final_filename" para guardar el archivo con los nuevos datos.
 7. Ejecuta Section 3.
 8. Ejecutar la Section 4. Cambiar el nombre del archivo csv donde estan los ultimos datos old_df = pd.read_csv("data_15May_2024_all_stations.csv"). Y revisar que el nombre dir = "data_31May_2024_all_stations.csv" coincida con el del final_filename en donde se guardaron los nuevos datos.
-9. Ejecutar la sección 9. Revisar los nombre de la carpeta de salida. Por default Los archivos finales se encontrarán en la carpeta "datos_por_estacion". Pero el csv de entrada de donde se toman los datos estará cambiando de nombre de acuerdo a la última actualizacion.
+9. Ejecutar la sección 5. Revisar los nombre de la carpeta de salida. Por default Los archivos finales se encontrarán en la carpeta "datos_por_estacion". Pero el csv de entrada de donde se toman los datos estará cambiando de nombre de acuerdo a la última actualizacion.
 
 Segundo, hay que unirlos a los datos anteriores.
 

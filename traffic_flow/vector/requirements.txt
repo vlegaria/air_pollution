@@ -1,0 +1,6 @@
+google-api-python-client==2.159.0
+protobuf==4.25.3
+pandas==2.2.3
+geopandas==1.0.1
+matplotlib==3.10.0
+schedule==1.2.2

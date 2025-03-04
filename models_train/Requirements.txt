@@ -1,0 +1,6 @@
+pandas
+matplotlib
+mlflow
+tensorflow
+numpy
+torch
