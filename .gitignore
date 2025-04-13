@@ -35,5 +35,5 @@ PEDwithID*
 street_analysis.qgz
 mlartifacts/
 mlruns/
-preprocessing_airpollution_data/datos_por_estacion_feb_dic_2024
+preprocessing_airpollution_data/datos_por_estacion_2005_dic2024
 traffic_flow/vector/__pycache*
