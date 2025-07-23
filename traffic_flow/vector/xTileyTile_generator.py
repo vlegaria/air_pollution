@@ -74,12 +74,14 @@ def main(args):
 
     elif file.endswith(".csv"):
         df = pd.read_csv(file, encoding="Latin1")
-        estaciones = df.dropna(subset=['Trafico'])
+        estaciones = df.copy()
+        #estaciones = df.dropna(subset=['Trafico'])
         estaciones = estaciones.reset_index()
         del estaciones["index"]
         for i in range(len(df)):
             station = df.loc[i]
-            if station["Trafico"] == "Si": #es una estación de interés porque activa/desactiva contingencias
+            #if station["Trafico"] == "Si": #es una estación de interés porque activa/desactiva contingencias
+            if True:
                 latitude = station.Latitude
                 longitude = station.Longitude
                 if pd.notna(latitude) and pd.notna(longitude):
